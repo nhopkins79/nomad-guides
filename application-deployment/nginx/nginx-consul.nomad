@@ -13,9 +13,6 @@ job "nginx" {
         port_map {
           https = 443
         }
-        volumes = [
-          "custom/default.conf:/etc/nginx/conf.d/default.conf"
-        ]
       }
       template {
         data = <<EOH
