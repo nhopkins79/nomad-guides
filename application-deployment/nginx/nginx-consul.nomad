@@ -13,9 +13,6 @@ job "nginx" {
         port_map {
           https = 443
         }
-        volumes = [
-          "custom/default.conf:/etc/nginx/conf.d/default.conf"
-        ]
       }
       template {
         data = <<EOH
@@ -23,7 +20,10 @@ job "nginx" {
             listen 8080;
             server_name nginx.service.consul;
             location /nginx {
-              root /local/data;
+              root /local/data;              
+                      volumes = [
+          "custom/default.conf:/etc/nginx/conf.d/default.conf"
+        ]
             }
           }
         EOH
